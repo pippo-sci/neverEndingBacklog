@@ -1,9 +1,11 @@
 import { Button, Container, Typography, Grid } from '@mui/material';
-import { Box, width } from '@mui/system';
+import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 
 function Questions() {
+
+    const data = localStorage.getItem('fileContent');
 
     const [score, setScore] = useState(0);
     const [index, setIndex] = useState(0);
@@ -15,7 +17,7 @@ function Questions() {
 
 
     const handleScore = (selected) => {
-        if ((mock_data.qs[index].answer == selected) && !(index in record)) {
+        if ((mock_data.qs[index].answer === selected) && !(index in record)) {
             setScore(score + 1);
             console.log(record);
         }
@@ -25,8 +27,6 @@ function Questions() {
         if (index < mock_data.qs.length - 1){
             setIndex(index + 1);
         }
-        
-        
     };
 
     const handlePrevious = () => {
@@ -51,7 +51,6 @@ function Questions() {
 
     return ( 
             <div>
-                
                 <Container maxWidth="sm" style={{padding: "70px 0", display: "block"}}>
                     <Box sx={{witdh: 500, height: 350, backgroundColor: '#6F73A6', borderRadius: "25px"}}>
                         <div>
@@ -88,11 +87,9 @@ function Questions() {
                                 <Typography color={letterColor}>
                                     Score: {score}
                                 </Typography>
-                                
                             </div>
                         </div>
-                    </Box>
-                    
+                    </Box>  
                 </Container>
             </div>
         );

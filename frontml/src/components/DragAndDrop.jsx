@@ -26,8 +26,6 @@ function DragAndDrop(){
         } catch (error){
             alert(error);
         } 
-        
-
         nav("/questions");
     }
 

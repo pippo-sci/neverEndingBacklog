@@ -15,4 +15,4 @@ async def process_file(files: UploadFile = File(...)):
     fileReader = PyPDF2.PdfFileReader(files.file)
     pages = [p.extractText() for p in fileReader.pages]
     question = t2t.Handler(pages).question()
-    return {"content": question}
+    return {"qs": question}
